@@ -11,15 +11,15 @@ This repository contains the code for a temperature analysis agorithm using ther
 
 ### Pose estimation
 
-<img src="images/diagram.png" alt="diagram" height="300"/>
+<img src="images/diagram.png" alt="diagram"/>
 
 A Flir handheld camera was used to acquire both color and thermal images of patients. The color image has a resolution of 480x640 pixels, while the thermal image has a resolution of 240x320 pixels. 
 
-<img src="images/rgb_thermal.png" alt="rgb_thermal" height="300"/>
+<img src="images/rgb_thermal.png" alt="rgb_thermal" height="250"/>
 
 The first stage consists of using the color image to find the patient keypoints using the OpenPose algorithm. This algorithm is trained with two datasets: COCO and MPII, which are able to find different keypoints. When the two models share a keypoint (for example, the neck of the patient), the coordinates found by both models are averaged in order to increase the prediction accuracy. After finding all keypoints, 10 regions are generated from the combinations of them, covering most of the patient's back. The equations used to find generate the regions are written on ``utils.py``. It is worth mentioning that each region has a corresponding pair, which is the horizontally mirrored region. Pairs of back regions are used to perform the temperature analysis.
 
-<img src="images/keypoints.png" alt="keypoints" height="300"/>
+<img src="images/result.png" alt="regions" height="250"/>
 
 ### Temperature statistics
 
